@@ -1,16 +1,39 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export default class Button extends Component {
   render() {
+    const isOperator = (val) => {
+      return !isNaN(val) || val === "." || val === "=";
+    };
     return (
-      <Wrapper>
-        <Wrapper2></Wrapper2>
-      </Wrapper>
+      <ButtonWrapper
+        operator={!isOperator(this.props.children)}
+        onClick={() => this.props.addToInput(this.props.children)}
+      >
+        {this.props.children}
+      </ButtonWrapper>
     );
   }
 }
 
-const Wrapper = styled.div``;
+const ButtonWrapper = styled.div`
+  background-color: #e0e1e6;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: lighter;
+  font-size: 1.4rem;
+  color: #888;
+  flex: 1;
+  outline: 1px solid #888;
+  padding: 5px;
 
-const Wrapper2 = styled.div``;
+  ${(props) =>
+    props.operator &&
+    css`
+      background-color: orange;
+      color: white;
+    `}
+`;
