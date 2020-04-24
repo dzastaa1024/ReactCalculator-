@@ -4,7 +4,7 @@ Simply React Calculator
 
 
 
-![image](Screen Shot 2020-04-24 at 16.06.41.png)
+![image](calc.png)
 
 
 
